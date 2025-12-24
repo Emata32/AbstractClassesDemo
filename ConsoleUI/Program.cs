@@ -17,29 +17,57 @@ namespace ConsoleUI
 
             #region Vehicles
 
-            /*
-             * Create an abstract class called Vehicle
-             * The vehicle class shall have three string properties: Year, Make, and Model
-             * Set the defaults of the properties to something generic in the Vehicle class
-             * Vehicle class shall have an abstract method called DriveAbstract with no implementation.
-             * Vehicle class shall have a virtual method called DriveVirtual with a base implementation.
-             */
-
-            /* 
-             * Now create 2 non-abstract classes: Car and Motorcycle, that inherit from Vehicle
-             * Add a distinct property in the 2 derived classes such as HasTrunk for Car and HasSideCart for Motorcycle
-             * Provide the implementations for the abstract methods
-             * Only in the Motorcycle class will you override the virtual drive method
-            */
+            
 
             // Create a list of Vehicle called vehicles
+            
+            var vehicles = new List<Vehicle>();
 
             /*
              * Create 4 instances: 1 Car, 1 Motorcycle, and then 2 instances of type Vehicle (use explicit typing) but use constuctors from derived classes
              * 
              * Set the properties values with object initializer syntax
              */
+            var carOne = new Car()
+            {
+                Year = "1990", 
+                Model = "Chevy",
+                Make = "Caprice", 
+                HasTrunk = true
+            };
 
+            var motorcycleOne = new Motorcycle()
+            {
+                Year = "2007",
+                Make = "Harley",
+                Model = "StreetBob",
+                HasSideCart = false
+            };
+
+            var motorcycleTwo = new Motorcycle()
+            {
+                Year = "2025",
+                Make = "Ducati", 
+                Model = "Streetfighter",
+                HasSideCart = false
+            };
+            var motorcycleThree = new Motorcycle()
+            {
+                Year = "1959",
+                Make = "Triumph",
+                Model = "Bonnrville",
+                HasSideCart = false
+            };
+                
+            var vehicle = new List<Vehicle>() { carOne, motorcycleOne,  motorcycleTwo, motorcycleThree };
+
+            foreach (var v in vehicle)
+            {
+                Console.WriteLine($"Make: {v.Make}, Model: {v.Model}, Year: {v.Year} Has cart");
+                v.DriveAbstract();
+                v.DriveVirtual();
+                
+            }
             /*
              * Add the 4 vehicles to the list
              * Using a foreach loop iterate through the list and display each of the properties
